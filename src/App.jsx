@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import ProductList from './components/ProductList';
+function App() { 
+    const[products, removeProducts] = useState([
+      { "id": 1, "name": "Laptop", "price": "$999", "inStock": true },
+      { "id": 2, "name": "Phone", "price": "$699", "inStock": false },
+      { "id": 3, "name": "Tablet", "price": "$499", "inStock": true },
+    ])
 
-const App = () => {
-  // TODO: Define initial product data
+  const remove = (id) => {
+    removeProducts(products.filter(product => product.id !== id))
+  }
+    
 
-  // TODO: Implement state to manage filtering
-
-  // TODO: Implement logic to filter products based on availability
-
+  
   return (
+    
     <div>
-      <h1>{/* TODO: Add 'Product Dashboard' title here */}</h1>
+      <h1>Product Dashboard</h1>
       
-      {/* TODO: Add buttons to allow filtering by availability */}
+      <ProductList products = {products} removeProduct = {remove}/>
 
-      {/* TODO: Render the ProductList component and pass filtered products */}
-      
     </div>
   );
-};
+}
 
 export default App;
